@@ -11,7 +11,8 @@ router.post('/register', async (req, res, next) => {
     const result = await authSchema.validateAsync(req.body)
 
     const doesUserExist = await User.findOne({email: result.email})
-    if (doesUserExist) throw createError.Conflict(`${result.email} is already been registered`)
+    if (doesUserExist) 
+      throw createError.Conflict(`${result.email} is already been registered`)
 
     const user = new User(result)
     const savedUser = await user.save()
