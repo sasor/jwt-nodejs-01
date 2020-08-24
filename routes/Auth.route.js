@@ -2,16 +2,18 @@ const {Router} = require('express')
 const createError = require('http-errors')
 const User = require('../Models/User.model')
 const router = Router()
+const authSchema = require('../helpers/validation')
 
 router.post('/register', async (req, res, next) => {
   try {
-    const {email, password} = req.body
-    if (!email || !password) throw createError.BadRequest()
+    //const {email, password} = req.body
+    //if (!email || !password) throw createError.BadRequest()
+    const result = await authSchema.validateAsync(req.body)
 
-    const doesUserExist = await User.findOne({email: email})
-    if (doesUserExist) throw createError.Conflict(`${email} is already been registered`)
+    const doesUserExist = await User.findOne({email: result.email})
+    if (doesUserExist) throw createError.Conflict(`${result.email} is already been registered`)
 
-    const user = new User({email, password})
+    const user = new User(result)
     const savedUser = await user.save()
     res.send(savedUser)
   } catch(error) {
