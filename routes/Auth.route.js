@@ -3,6 +3,7 @@ const createError = require('http-errors')
 const User = require('../Models/User.model')
 const router = Router()
 const authSchema = require('../helpers/validation')
+const {signAccessToken} = require('../helpers/jwt')
 
 router.post('/register', async (req, res, next) => {
   try {
@@ -16,13 +17,30 @@ router.post('/register', async (req, res, next) => {
 
     const user = new User(result)
     const savedUser = await user.save()
-    res.send(savedUser)
+    const token = await signAccessToken(savedUser.id)
+    res.send({token})
   } catch(error) {
     next(error)
   }
 })
 router.post('/login', async (req, res, next) => {
-  res.send('login')
+  try {
+    const result = await authSchema.validateAsync(req.body)
+    const doesUserExist = await User.findOne({email: result.email})
+    if (!doesUserExist)
+      throw createError.NotFound('User not registered')
+
+    const matchPassword = await doesUserExist.verifyPassword(result.password)
+    if (!matchPassword)
+      throw createError.Unauthorized('Username/Password not valid')
+
+    const token = await signAccessToken(doesUserExist.id)
+    res.send({token})
+  } catch (error) {
+    if (error.isJoi === true)
+      return next(createError.BadRequest('Invalid Username/Password'))
+    next(error)
+  }
 })
 router.post('/refresh-token', async (req, res, next) => {
   res.send('refresh token')

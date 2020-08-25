@@ -5,6 +5,7 @@ const {connect, connection} = require('mongoose')
 require('dotenv').config()
 
 const AuthRoute = require('./routes/Auth.route')
+const { verifyAccessToken } = require('./helpers/jwt')
 
 const app = express()
 app.set('port', process.env.PORT || 3000)
@@ -12,7 +13,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(morgan('dev'))
 
-app.get('/', async (req, res) => {
+app.get('/', verifyAccessToken, async (req, res) => {
+  console.log(req.headers)
   res.send({success: true})
 })
 
