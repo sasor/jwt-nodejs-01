@@ -1,0 +1,217 @@
+_type: export
+__export_format: 4
+__export_date: 2020-08-26T03:37:41.433Z
+__export_source: insomnia.desktop.app:v6.5.4
+resources:
+  - _id: req_2dd110f9f8b744beaba3be8fb69caf0a
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTg0MDA3NTIsImV4cCI6MTYyOTk1ODM1MiwiYXVkIjoiNWY0NDAxZWZlOWJhMmQyOGVmZjRmNGQxIiwiaXNzIjoiYnlzYXNvci50ZWNoIn0.kuipEnTtOjPnTYDBZ7ZXVuODtbGbIqHp2hnvVkI-DRE"
+        }
+    created: 1598281351556
+    description: ""
+    headers:
+      - id: pair_980e8d8901c648868aa3c173ed59889d
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1598281351556
+    method: DELETE
+    modified: 1598400761259
+    name: DELETE LOGOUT
+    parameters: []
+    parentId: fld_7c61a3234e2c44e7a391bbbeaa4cd5c9
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:3000/auth/logout
+    _type: request
+  - _id: fld_7c61a3234e2c44e7a391bbbeaa4cd5c9
+    created: 1598280016757
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1598280016757
+    modified: 1598280016757
+    name: JWT
+    parentId: wrk_abfe18985f084281bfc03afbe165fa2d
+    _type: request_group
+  - _id: wrk_abfe18985f084281bfc03afbe165fa2d
+    created: 1564608340906
+    description: ""
+    modified: 1564608340906
+    name: Insomnia
+    parentId: null
+    _type: workspace
+  - _id: req_53b555285dfa43f6afafbaa020fb4608
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTg0MDAzNTIsImV4cCI6MTYyOTk1Nzk1MiwiYXVkIjoiNWY0NDAxZWZlOWJhMmQyOGVmZjRmNGQxIiwiaXNzIjoiYnlzYXNvci50ZWNoIn0.JOrSJoTzhooqNwCW-LmOErGedq9AETY9gbJGlYWXDAk"
+        }
+    created: 1598281318479
+    description: ""
+    headers:
+      - id: pair_359934cfb24341e899541ecfd3b4f446
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1598281318479
+    method: POST
+    modified: 1598400381536
+    name: POST REFRESH TOKEN
+    parameters: []
+    parentId: fld_7c61a3234e2c44e7a391bbbeaa4cd5c9
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:3000/auth/refresh-token
+    _type: request
+  - _id: req_b1d0ab6ceef94c7e9e7d12b4eb86ce04
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email":"dora@mail.com",
+        	"password":"1234"
+        }
+    created: 1598281290396
+    description: ""
+    headers:
+      - id: pair_c78e8bb108b74b1fa87494bb2ca83370
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1598281290396
+    method: POST
+    modified: 1598363800802
+    name: POST REGISTER
+    parameters: []
+    parentId: fld_7c61a3234e2c44e7a391bbbeaa4cd5c9
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:3000/auth/register
+    _type: request
+  - _id: req_257128f45622417aa4ba20da409d286d
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "doe@mail.com",
+        	"password": "1234"
+        }
+    created: 1598281250123
+    description: ""
+    headers:
+      - id: pair_e1f193879ded4537bacd1b3de2c30441
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1598281250123
+    method: POST
+    modified: 1598293098109
+    name: POST LOGIN
+    parameters: []
+    parentId: fld_7c61a3234e2c44e7a391bbbeaa4cd5c9
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:3000/auth/login
+    _type: request
+  - _id: req_67c09bef0d78478e9c28f5df0657b094
+    authentication: {}
+    body: {}
+    created: 1598280171756
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1598280171756
+    method: GET
+    modified: 1598280795319
+    name: GET /not_found
+    parameters: []
+    parentId: fld_7c61a3234e2c44e7a391bbbeaa4cd5c9
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:3000/xxx
+    _type: request
+  - _id: req_2a74935fa0de4083a6447ffb07f11156
+    authentication:
+      token: ""
+      type: bearer
+    body: {}
+    created: 1598280043062
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1598280043062
+    method: GET
+    modified: 1598363706567
+    name: GET /
+    parameters: []
+    parentId: fld_7c61a3234e2c44e7a391bbbeaa4cd5c9
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:3000/
+    _type: request
+  - _id: env_2693d85596c47edbf5168cfe40cfa2990cb70505
+    color: null
+    created: 1564608340950
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1564608340950
+    modified: 1564608340950
+    name: Base Environment
+    parentId: wrk_abfe18985f084281bfc03afbe165fa2d
+    _type: environment
+  - _id: jar_2693d85596c47edbf5168cfe40cfa2990cb70505
+    cookies:
+      - creation: 2019-07-31T21:59:48.372Z
+        domain: localhost
+        expires: 2019-08-03T20:25:28.000Z
+        hostOnly: true
+        id: "6578138594846141"
+        key: XSRF-TOKEN
+        lastAccessed: 2019-08-03T18:25:28.895Z
+        maxAge: 7200
+        path: /
+        value: eyJpdiI6Ikg0WVwvUDV2TDV2MnNPXC9FYkxqdWJzZz09IiwidmFsdWUiOiJPR1wvQXBNNE1UdjBuOHhlYnVTMGV6UzdiWTByMjdjNjhoRXpKRENvSmZ3RDgwY0JFR05IK1F3YnB4N0pFSWNodCIsIm1hYyI6Ijg2NTg2NzFiZDBiNzM2NTBkZmY2ZWIyZTRiM2RjMTFiN2RiNTI0NjJlOTlmNDAzOTg3NWJkNzBiOWQ4MTc2ZjEifQ%3D%3D
+      - creation: 2019-07-31T21:59:48.374Z
+        domain: localhost
+        expires: 2020-07-18T04:31:41.000Z
+        hostOnly: true
+        httpOnly: true
+        id: "026862996748665546"
+        key: laravel_session
+        lastAccessed: 2020-07-18T02:31:41.408Z
+        maxAge: 7200
+        path: /
+        value: eyJpdiI6Im91Q2x2U0dGaFZqTTRtR0piVFwvbVpBPT0iLCJ2YWx1ZSI6ImFqT3ZhVEs4U2Y2UzNiVlROTmRkVzVTQU9YQmU5R3RkdmhiQ1wvMkVja1c5cDE2Ull6aHRMcjVDdDRFcWM1YzNTcXlcL3c2NW9TczBSRElmdUo0cVpGRmc9PSIsIm1hYyI6IjQ5OGRiNmQ0MGQ5NWEyNjUyN2NhMmRhM2ZlMzZhZjAzZTc3ZTVmZWUxYmU1MjBmOTg4MTVhMWM1NTE3M2VhMmMifQ%3D%3D
+    created: 1564608340952
+    modified: 1595039501408
+    name: Default Jar
+    parentId: wrk_abfe18985f084281bfc03afbe165fa2d
+    _type: cookie_jar
