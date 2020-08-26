@@ -1,5 +1,6 @@
 const JWT = require('jsonwebtoken')
 const createError = require('http-errors')
+const client = require('./redis')
 
 const signAccessToken = (userId) => {
   return new Promise((ok, bad) => {
@@ -47,10 +48,19 @@ const signRefreshAccessToken = (userId) => {
       audience: userId
     }
     JWT.sign(payload, secret, options, (err, token) => {
-      if (err)
+      if (err) {
         //return bad(err)
         return bad(createError.InternalServerError())
-      ok(token)
+      }
+      const exp =  365 * 24 * 60 * 60 // seconds: expires on 1 year
+      client.SET(userId, token, 'EX', exp, (err, reply) => {
+        if (err) {
+          console.log(err.message)
+          return bad(createError.InternalServerError())
+        }
+        console.log(reply)
+        ok(token)
+      })
     })
   })
 }
@@ -68,7 +78,16 @@ const verifyRefreshToken = (refreshToken) => {
         }
         console.log(payload)
         const userId = payload.aud
-        ok(userId)
+        client.GET(userId, (err, result) =>{
+          if (err) {
+            console.log(err.message)
+            return bad(createError.InternalServerError())
+          }
+          if (refreshToken === result) {
+            return ok(userId)
+          }
+          bad(createError.Unauthorized())
+        })
     })
   })
 }
